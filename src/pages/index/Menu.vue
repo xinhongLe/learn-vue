@@ -2,7 +2,7 @@
   <el-menu
     @select="handleSelect"
   >
-    <MenuItem v-for="item in menus" :key="item.path" :menu="item" />
+    <menu-item v-for="item in menus" :key="item.path" :menu="item" />
   </el-menu>
 </template>
 
@@ -29,10 +29,13 @@ export default {
       }
     },
     handleSelect(index, indexPath) {
+      console.log(index, indexPath)
       const menu = this._findMenu(this.menus, 'name', index)
+      console.log(menu, 'open')
       if (menu.blank) {
         const newRoute = this.$router.resolve(menu)
-        window.open(newRoute.href, '_blank')
+        console.log(newRoute, 'ppp')
+        // window.open(newRoute.href, '_blank')
       } else {
         this.$router.push({ name: index })
       }

@@ -103,6 +103,19 @@ export default [
     ]
   },
   {
+    path: '/vue',
+    title: '学习vue',
+    component: () => import('@/pages/index/Index'),
+    children: [
+      {
+        path: 'learnVue',
+        name: 'learnVue',
+        title: '学习官网',
+        component: () => import('@/pages/learnVue/index')
+      }
+    ]
+  },
+  {
     path: '/temp',
     title: '临时',
     component: () => import('@/pages/index/Index'),
