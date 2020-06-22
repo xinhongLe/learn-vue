@@ -204,6 +204,106 @@
         </section>
       </section>
     </section>
+
+    <section style="max-width: 100% !important;" data-tools="新媒体管家">
+      <section style="display: flex;justify-content: space-between">
+        <img src="https://static.xmt.cn/img/a468c71511b848e896dfb244be052a23.png" style="pointer-events: none; max-width: 100% !important; width: 76px !important; height: 38px!important;">
+        <img src="https://static.xmt.cn/img/3a7ece1f9eb54b92ac8cb157b73a5eb4.svg" style="pointer-events: none; max-width: 100% !important; width: 114px !important; height: 142px!important;">
+      </section>
+      <section style="background: #EFF9FF;border-radius: 8px;box-sizing:border-box;padding: 30px 12px 12px;margin: -132px 10px 0;">
+        <section style="text-indent:2em;font-size: 14px;color: #0C65D0;letter-spacing: 1.56px;text-align: justify;line-height: 25px;">
+          <section>我会住在其中一颗星星上面，在某颗星星上微笑着，每当夜晚你仰望星空的时候，就会像是看到所有的星星都在微笑般。——《小王子》</section>
+        </section>
+        <section>
+          <img style="pointer-events:none;display:block;width: 100% !important;height: 180px!important;" src="https://static.xmt.cn/img/c539cdd87bec40dfac49b2b65783c4dd.png" alt="">
+        </section>
+      </section>
+      <section style="display: flex;justify-content: space-between;align-items: flex-end;margin-top: -132px">
+        <img src="https://static.xmt.cn/img/717f5657fa4d4fbabad3cc24c15298da.svg" style="pointer-events: none; max-width: 100% !important; width: 114px !important; height: 142px!important;">
+        <img src="https://static.xmt.cn/img/84044b5cc57946e88bb4be2d9d735288.png" style="pointer-events: none; max-width: 100% !important; width: 124px !important; height: 28px!important;margin-bottom: -2px;">
+      </section>
+    </section>
+
+    <section style="max-width: 100% !important;" data-tools="新媒体管家">
+      <section style="display: flex;justify-content: flex-end">
+        <img src="https://static.xmt.cn/img/3a7ece1f9eb54b92ac8cb157b73a5eb4.svg" style="pointer-events: none; max-width: 100% !important; width: 114px !important; height: 142px!important;">
+      </section>
+      <section style="background: #EFF9FF;border-radius: 8px;box-sizing:border-box;margin: -132px 10px 0;">
+        <section>
+          <img style="pointer-events:none;display:block;width: 100% !important;height: 198px!important;" src="https://static.xmt.cn/img/2784a0cacbcc4f8eb7c3ccb59fe24855.png" alt="">
+        </section>
+      </section>
+      <section style="display: flex;justify-content: space-between;align-items: flex-end;margin-top: -132px">
+        <img src="https://static.xmt.cn/img/717f5657fa4d4fbabad3cc24c15298da.svg" style="pointer-events: none; max-width: 100% !important; width: 114px !important; height: 142px!important;">
+        <img src="https://static.xmt.cn/img/bc65de493b704500b99ecbfb764d9e8b.png" style="pointer-events: none; max-width: 100% !important; width: 52px !important; height: 24px!important;margin-bottom: -2px;">
+      </section>
+
+    </section>
+
+    <section style="max-width: 100% !important;" data-tools="新媒体管家">
+      <section style="display: flex;justify-content: flex-start">
+        <img src="https://static.xmt.cn/img/8438959192304fb78de624e2483a221f.svg" style="pointer-events: none; max-width: 100% !important; width: 116px !important; height: 98px!important;display: block">
+      </section>
+      <section style="display: flex;justify-content: space-between;margin: -86px 12px 0;">
+        <section style="width: 50%;box-sizing: border-box;padding-right: 12px">
+          <img src="https://static.xmt.cn/img/12be5c1adfe04b0e97418cc1197728dd.png" style="pointer-events: none; max-width: 100% !important; width:100%!important; height: 170px!important;display: block">
+          <img src="https://static.xmt.cn/img/9598427f242a4942986244d5b9e19f71.png" style="pointer-events: none; max-width: 100% !important; width:100% !important; height: 26px!important;margin-top: 6px;display: block">
+        </section>
+        <section style="width: 50%;box-sizing: border-box;padding-left: 12px">
+          <section style="display: flex;justify-content: center;margin-bottom: 6px">
+            <img src="https://static.xmt.cn/img/78ec26f62f7345e3bc2f2e53dd105975.png" style="pointer-events: none; max-width: 100% !important;max-width:70px!important; height: 26px!important;display: block">
+            <section
+                style="min-width: 85px!important;height: 26px;line-height: 26px;padding-left: 4px;
+      font-family: &quot;PingFang SC&quot;, 微软雅黑, mp-quote, -apple-system-font, BlinkMacSystemFont, &quot;Helvetica Neue&quot;, &quot;PingFang SC&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei UI&quot;, &quot;Microsoft YaHei&quot;, Arial, sans-serif;
+      font-size: 16px;color: #0C65D0;letter-spacing: 1.78px;font-weight: bold;min-width: 90px"
+            >
+              <section>不散毕业季</section>
+            </section>
+          </section>
+          <img src="https://static.xmt.cn/img/0012e6f5fc8d400bad8e6a395ffadb80.png" style="pointer-events: none; max-width: 100% !important; width:100%!important; height: 170px!important;display: block">
+        </section>
+      </section>
+      <section style="display: flex;justify-content: flex-end;margin-top: -86px">
+        <img src="https://static.xmt.cn/img/7cd65bc6b0ee4b1c9e0197e33677b23e.svg" style="pointer-events: none; max-width: 100% !important; width: 116px !important; height: 98px!important;display: block;margin-bottom: -2px;">
+      </section>
+    </section>
+
+    <section style="max-width: 500px !important; min-width: 360px !important;;" data-tools="新媒体管家">
+      <section style="display: flex;justify-content: space-between">
+        <img src="https://static.xmt.cn/img/8438959192304fb78de624e2483a221f.svg" style="pointer-events: none; max-width: 100% !important; width: 116px !important; height: 98px!important;display: block">
+        <img src="https://static.xmt.cn/img/a468c71511b848e896dfb244be052a23.png" style="pointer-events: none; max-width: 100% !important; width: 76px !important; height: 38px!important;margin-top: -16px;">
+        <img src="https://static.xmt.cn/img/dae73344d8a34b8788570057ec5559b4.png" style="pointer-events: none; max-width: 100% !important; width: 76px !important; height: 34px!important;">
+      </section>
+      <section style="display: flex;justify-content: space-between;margin-top: -98px;background: #EFF9FF;border-radius: 8px;padding: 28px 0 2px;">
+        <section style="width: 50%;box-sizing: border-box;padding:0 20px 10px 40px;z-index: 6">
+          <img src="https://static.xmt.cn/img/4dc3e16f6b2746a3842ef2ae5adbdd5c.png" style="pointer-events: none; max-width: 100% !important; width:100%!important; height: 130px!important;display: block">
+        </section>
+        <section style="width: 50%;box-sizing: border-box;padding-left: 20px">
+          <section
+              style="min-width: 150px!important;
+      font-family: &quot;PingFang SC&quot;, 微软雅黑, mp-quote, -apple-system-font, BlinkMacSystemFont, &quot;Helvetica Neue&quot;, &quot;PingFang SC&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei UI&quot;, &quot;Microsoft YaHei&quot;, Arial, sans-serif;
+     color: #0C65D0;"
+          >
+            <section style=" font-size: 18px;font-weight: bold;letter-spacing: 0.41px;padding: 20px 0">
+              <section>新媒体管家</section>
+            </section>
+            <section style=" font-size: 14px;letter-spacing:0.32px;line-height: 20px;">
+              长按扫描二维码
+              <br>
+              关注我们 获取更多资讯
+              <br>
+              微信号：xmtcn123
+            </section>
+
+          </section>
+        </section>
+      </section>
+      <section style="display: flex;justify-content: space-between;align-items: flex-end;margin-top: -96px">
+        <img src="https://static.xmt.cn/img/a87d9374c3fb48289e14d2bedfce5087.png" style="pointer-events: none; max-width: 100% !important; width: 80px !important; height: 35px!important;">
+        <img src="https://static.xmt.cn/img/7cd65bc6b0ee4b1c9e0197e33677b23e.svg" style="pointer-events: none; max-width: 100% !important; width: 116px !important; height: 98px!important;display: block;margin-bottom: -2px;">
+      </section>
+    </section>
+
   </div>
 </template>
 
