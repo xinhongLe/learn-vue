@@ -13,7 +13,8 @@ export default {
     }
   },
   actions: {
-    addDept: ({ commit }, dept) => {
+    addDept: ({ commit, rootState, rootGetters }, dept) => {
+      console.log(rootState, rootGetters, 'op')
       commit('ADD_DEPT', dept)
     }
   }

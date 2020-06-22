@@ -5,10 +5,12 @@ import App from './App'
 import router from './router'
 import store from './store/index'
 import ElementUI from 'element-ui'
+import moment from 'moment'
 
 import 'element-ui/lib/theme-chalk/index.css'
 import './assets/style/reset.css'
 
+Vue.prototype.$moment = moment
 Vue.use(ElementUI, { size: 'small', zIndex: 3000 })
 
 Vue.config.productionTip = false
