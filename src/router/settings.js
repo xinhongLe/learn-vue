@@ -1,5 +1,10 @@
 export default [
   {
+    path: '/learn-css',
+    title: '学习基础',
+    component: () => import('@/pages/css/index'),
+  },
+  {
     path: '/learn-vue-base',
     title: '学习基础',
     component: () => import('@/pages/index/Index'),
@@ -50,12 +55,18 @@ export default [
         children: [
           {
             path: '',
-            hidden: true,
+            // hidden: true,
             name: 'learn-display-mainContent',
             component: () => import('@learn/learn-css/04/components/index')
           }
         ]
-      }
+      },
+      {
+        path: '05-css3',
+        name: '05-css3',
+        title: 'css3',
+        component: () => import('@learn/learn-css/05/index')
+      },
     ]
   },
   {
