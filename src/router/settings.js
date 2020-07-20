@@ -26,6 +26,12 @@ export default [
         name: 'learn-async-await',
         title: 'async-await',
         component: () => import('@learn/learn-base/03/Index')
+      },
+      {
+        path: 'learn-upload',
+        name: 'learn-upload',
+        title: 'learn-upload',
+        component: () => import('@/components/upload')
       }
     ]
   },
@@ -61,12 +67,12 @@ export default [
           }
         ]
       },
-      {
-        path: '05-css3',
-        name: '05-css3',
-        title: 'css3',
-        component: () => import('@learn/learn-css/05/index')
-      },
+      // {
+      //   path: '05-css3',
+      //   name: '05-css3',
+      //   title: 'css3',
+      //   component: () => import('@learn/learn-css/05/index')
+      // },
     ]
   },
   {

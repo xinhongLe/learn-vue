@@ -64,6 +64,11 @@ export default {
       immediate: true
     }
   },
+  beforeRouteEnter(to, from, next) {
+    console.log(to)
+    console.log(from)
+    next()
+  },
   methods: {
     tableRowClassName({ row, rowIndex }) {
       if (rowIndex === 1) {
@@ -83,7 +88,7 @@ export default {
   filters: {
     nameFilter: function(value) {
       // 鼠标移入每次都会调用过滤器
-      return value + '1'
+      return value + '9'
     }
   },
   data() {
