@@ -1,10 +1,5 @@
 export default [
   {
-    path: '/learn-css',
-    title: '学习基础',
-    component: () => import('@/pages/css/index'),
-  },
-  {
     path: '/learn-vue-base',
     title: '学习基础',
     component: () => import('@/pages/index/Index'),
@@ -26,6 +21,12 @@ export default [
         name: 'learn-async-await',
         title: 'async-await',
         component: () => import('@learn/learn-base/03/Index')
+      },
+      {
+        path: 'learn-table',
+        name: 'learn-table',
+        title: 'table表格',
+        component: () => import('@learn/learn-base/04/index')
       },
       {
         path: 'learn-upload',
@@ -151,6 +152,12 @@ export default [
         component: () => import('@/pages/temp/prerender-spa/Index')
       }
     ]
+  },
+  {
+    path: '/learn-vxCss',
+    name: 'learn-vxCss',
+    blank: true,
+    title: '微信样式',
+    component: () => import('@/pages/css/index'),
   }
-
 ]
