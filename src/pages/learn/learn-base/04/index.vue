@@ -12,74 +12,59 @@
       <el-table-column prop="amount2" sortable label="数值 2"></el-table-column>
       <el-table-column prop="amount3" sortable label="数值 3"></el-table-column>
     </el-table>
+
+    <el-form ref="form" :model="form">
+      <el-table :data="form.tableDataCol" border style="width: 100%;margin-top: 40px">
+        <el-table-column type="index" width="60"></el-table-column>
+        <el-table-column v-for="(colTitle,index) in colData" :key="index" :label="colTitle">
+          <template slot-scope="{row, $index }">
+            <el-form-item :prop="`tableDataCol[${$index}][${index}]`" :rules="[{ required: true, message: '请输入',trigger:'blur'}]">
+              <el-input v-model.trim="row[index]"></el-input>
+            </el-form-item>
+          </template>
+        </el-table-column>
+      </el-table>
+    </el-form>
   </div>
 </template>
 
 <script>
+import * as testData from './data.js'
 export default {
   name: 'Index',
   data() {
     return {
-      tableData: [{
-        id: '12987122',
-        name: '王小虎',
-        amount1: '234',
-        amount2: '3.2',
-        amount3: 10
-      }, {
-        id: '12987122',
-        name: '王小虎',
-        amount1: '165',
-        amount2: '4.43',
-        amount3: 12
-      }, {
-        id: '12987124',
-        name: '王小虎',
-        amount1: '324',
-        amount2: '1.9',
-        amount3: 9
-      }, {
-        id: '12987124',
-        name: '王小虎',
-        amount1: '621',
-        amount2: '2.2',
-        amount3: 17
-      }, {
-        id: '12987124',
-        name: '王小虎',
-        amount1: '539',
-        amount2: '4.1',
-        amount3: 15
-      }, {
-        id: '12987125',
-        name: '王小虎',
-        amount1: '539',
-        amount2: '4.1',
-        amount3: 15
-      }],
+      ...testData,
       spanArr: [],
       pos: '',
       num: 0,
-      arr: [1, 2, 3, 4]
+      form: {
+        tableDataCol: []
+      },
+      colData: []
     }
   },
-  mounted() {
-    this.getSpanArr(this.tableData)
+  created() {
+    // this.getSpanArr(this.tableData)
     // this.sumRowMethod()
     // this.getHeight(200)
-    this.aa(...this.arr)
+
+    this.transformData()
   },
   methods: {
-    aa(res, ...aa) {
-      console.log(res, aa, 'ppp')
-      // this.timer = setInterval(() => {
-      //   console.log(this.timer, 'ok')
-      //   this.num++
-      //   if (this.num > 4) {
-      //     clearInterval(this.timer)
-      //     console.log(this.timer, 'pp')
-      //   }
-      // }, 1000)
+    transformData() {
+      const arr = []
+      for (let i = 0; i < 5; i++) {
+        arr[i] = []
+      }
+      const len = this.tableDataTest.length
+      for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < len; j++) {
+          arr[i][j] = this.tableDataTest[j]['a' + (i + 1)]
+        }
+      }
+      this.form.tableDataCol = arr
+      this.colData = this.tableDataTest.map(item => item.name)
     },
     getHeight(reduce) {
       if (!this.reduce) this.reduce = reduce
