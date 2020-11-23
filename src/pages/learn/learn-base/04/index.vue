@@ -25,6 +25,33 @@
         </el-table-column>
       </el-table>
     </el-form>
+
+    <div style="margin-top: 40px">
+      <div>
+        <el-button type="primary" @click="handleShowDom">显示设置</el-button>
+        <div v-if="showDom" style="margin-top: 10px">
+          <div>
+            <el-button size="mini" type="primary" @click="handleReset">重置</el-button>
+            <el-button size="mini" type="primary" @click="handleConfirm">确认</el-button>
+          </div>
+          <el-table ref="multipleTable" :data="selectData" style="width: 100%" :show-header="false" @selection-change="handleSelectionChange">
+            <el-table-column type="selection" width="55" :selectable="isDisabledSelect">
+            </el-table-column>
+            <el-table-column width="120">
+              <template slot-scope="scope">{{ scope.row.name }}</template>
+            </el-table-column>
+          </el-table>
+        </div>
+      </div>
+      <el-table :data="tableData" border style="width: 100%;margin-top: 40px">
+        <el-table-column type="index" width="60"></el-table-column>
+        <el-table-column v-for="(item,index) in selectData.filter(item => item.check)" :key="index" :label="item.name">
+          <template slot-scope="{row}">
+            <span>{{ row[item.prop] }}</span>
+          </template>
+        </el-table-column>
+      </el-table>
+    </div>
   </div>
 </template>
 
@@ -32,6 +59,9 @@
 import * as testData from './data.js'
 export default {
   name: 'Index',
+  computed: {
+
+  },
   data() {
     return {
       ...testData,
@@ -41,7 +71,29 @@ export default {
       form: {
         tableDataCol: []
       },
-      colData: []
+      colData: [],
+      staff: [
+        { name: 'April', job: 'programmer', age: '18', hobby: 'study' },
+        { name: 'Shawn', job: 'student', age: '8', hobby: 'study' },
+        { name: 'Leo', job: 'teacher', age: '28', hobby: 'play' },
+        { name: 'Todd', job: 'programmer', age: '19', hobby: 'sleep' },
+        { name: 'Scoot', job: 'cook', age: '38', hobby: 'paintting' }
+      ],
+      selectData: [
+        { name: '区域名称', prop: 'test1', check: true },
+        { name: '公司名称', prop: 'test2', check: true },
+        { name: '未提交', prop: 'test3', check: true },
+        { name: '待审核', prop: 'test4', check: true },
+        { name: '审核通过', prop: 'test5', check: true }
+      ],
+      tableData: [
+        { test1: '湖北区域', test2: '湖北航信', test3: '5', test4: '7', test5: '99' },
+        { test1: '河南区域', test2: '河南航信', test3: '5', test4: '7', test5: '99' },
+        { test1: '山西区域', test2: '山西航信', test3: '5', test4: '7', test5: '99' },
+        { test1: '新疆区域', test2: '新疆航信', test3: '5', test4: '7', test5: '99' }
+      ],
+      multipleSelection: [],
+      showDom: false
     }
   },
   created() {
@@ -52,6 +104,52 @@ export default {
     this.transformData()
   },
   methods: {
+    handleReset() {
+      this.selectData.forEach((item, index) => {
+        if (index !== 0) {
+          item.check = false
+        }
+      })
+      this.toggleSelection(this.selectData)
+    },
+    handleShowDom() {
+      this.showDom = !this.showDom
+      if (this.showDom) {
+        this.toggleSelection(this.selectData)
+      }
+    },
+    handleConfirm() {
+      const arr = this.multipleSelection.map(item => item.name)
+      console.log(arr, 'opp')
+      this.selectData.forEach(item => {
+        if (!arr.includes(item.name)) {
+          item.check = false
+        } else {
+          item.check = true
+        }
+      })
+    },
+    isDisabledSelect(row, index) {
+      if (index === 0) {
+        return false
+      }
+      return true
+    },
+    toggleSelection(rows) {
+      rows.forEach((row, index) => {
+        if (row.check) {
+          this.$nextTick(() => {
+            this.$refs.multipleTable.toggleRowSelection(row, true)
+          })
+        } else {
+          this.$refs.multipleTable.toggleRowSelection(row)
+        }
+      })
+    },
+    handleSelectionChange(val) {
+      this.multipleSelection = val
+      console.log(this.multipleSelection)
+    },
     transformData() {
       const arr = []
       for (let i = 0; i < 5; i++) {
