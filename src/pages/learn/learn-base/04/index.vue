@@ -43,7 +43,7 @@
           </el-table>
         </div>
       </div>
-      <el-table :data="tableData" border style="width: 100%;margin-top: 40px">
+      <el-table :data="tableData1" border style="width: 100%;margin-top: 40px">
         <el-table-column type="index" width="60"></el-table-column>
         <el-table-column v-for="(item,index) in selectData.filter(item => item.check)" :key="index" :label="item.name">
           <template slot-scope="{row}">
@@ -86,7 +86,7 @@ export default {
         { name: '待审核', prop: 'test4', check: true },
         { name: '审核通过', prop: 'test5', check: true }
       ],
-      tableData: [
+      tableData1: [
         { test1: '湖北区域', test2: '湖北航信', test3: '5', test4: '7', test5: '99' },
         { test1: '河南区域', test2: '河南航信', test3: '5', test4: '7', test5: '99' },
         { test1: '山西区域', test2: '山西航信', test3: '5', test4: '7', test5: '99' },
@@ -97,7 +97,7 @@ export default {
     }
   },
   created() {
-    // this.getSpanArr(this.tableData)
+    this.getSpanArr(this.tableData)
     // this.sumRowMethod()
     // this.getHeight(200)
 
@@ -142,7 +142,7 @@ export default {
             this.$refs.multipleTable.toggleRowSelection(row, true)
           })
         } else {
-          this.$refs.multipleTable.toggleRowSelection(row)
+          this.$refs.multipleTable.toggleRowSelection(row, false)
         }
       })
     },
@@ -170,7 +170,6 @@ export default {
       console.log(reduce, this.reduce, this.tableHeight, 'ok')
     },
     headerMethod({ row, rowIndex }) {
-      console.log(row, rowIndex, 'ok')
       if (rowIndex === 0) {
         return { display: 'none' }
       }
