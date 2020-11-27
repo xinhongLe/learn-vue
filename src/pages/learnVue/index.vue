@@ -10,21 +10,19 @@
       {{ fullValue }}
       <el-input v-model="value" placeholder="placeholder"></el-input>
     </div>
-    <div>
+    <div class="m_top">
       <p>当前时间：{{ $moment().format('YYYY-MM-DD HH:mm:ss') }}</p>
     </div>
-    <div>
+    <div class="m_top">
       <el-button type="primary">上传</el-button>
       <input ref="File" type="file" @change="handleUpload">
     </div>
-    <div>
-      <el-date-picker
-        v-model="date"
-        type="daterange"
-        range-separator="至"
-        start-placeholder="开始日期"
-        end-placeholder="结束日期"
-      >
+    <div class="m_top">
+      <el-date-picker v-model="date" type="daterange" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期">
+      </el-date-picker>
+    </div>
+    <div class="m_top">
+      <el-date-picker v-model="value2" type="date" placeholder="选择日期" format="yyyy 年 MM 月 dd 日" value-format="yyyy-MM-dd">
       </el-date-picker>
     </div>
   </div>
@@ -42,7 +40,8 @@ export default {
         { id: 1, name: 'hha' },
         { id: 2, name: 'lla' },
         { id: 3, name: 'yya' }
-      ]
+      ],
+      value2: ''
     }
   },
   watch: {
@@ -54,10 +53,11 @@ export default {
     }
   },
   mounted() {
-    console.log(obj, '000')
     window.addEventListener('resize', this.debounce(this.conFn, 500), true)
     this.date = this.getLast7Days()
-    console.log(this.$moment().add(7, 'd').format('YYYY-MM-DD'))
+
+    // 上月1号
+    this.value2 = this.$moment('2021-12-23').subtract(1, 'months').format('YYYY-MM') + '-01'
   },
   methods: {
     getLast7Days() {
@@ -97,5 +97,8 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style scoped lang="scss">
+  .m_top{
+    margin-top: 30px
+  }
 </style>
