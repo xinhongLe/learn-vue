@@ -102,7 +102,14 @@ export default {
     // this.getHeight(200)
 
     this.transformData()
+    localStorage.setItem('value', JSON.stringify({ name: 'hong' }))
+    this.$once('hook:beforeDestroy',() => {
+      localStorage.removeItem('value')
+    })
   },
+  // beforeDestroy() {
+  //   localStorage.removeItem('value')
+  // },
   methods: {
     handleReset() {
       this.selectData.forEach((item, index) => {

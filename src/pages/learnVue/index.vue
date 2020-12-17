@@ -22,16 +22,18 @@
       </el-date-picker>
     </div>
     <div class="m_top">
-      <el-date-picker v-model="value2" type="date" placeholder="选择日期" format="yyyy 年 MM 月 dd 日" value-format="yyyy-MM-dd">
+      <el-date-picker v-model="value2" type="date" placeholder="选择日期" format="yyyy 年 MM 月 dd 日" value-format="timestamp">
       </el-date-picker>
     </div>
   </div>
 </template>
 <script>
+import { tableItems } from './data'
 export default {
   name: 'Index',
   data() {
     return {
+      tableItems,
       date: [],
       data: 'pop',
       value: '',
@@ -57,9 +59,19 @@ export default {
     this.date = this.getLast7Days()
 
     // 上月1号
-    this.value2 = this.$moment('2021-12-23').subtract(1, 'months').format('YYYY-MM') + '-01'
+    const time = this.$moment().subtract(1, 'months').format('YYYY-MM') + '-01'
+    this.value2 = this.$moment(time).format('x')
+
+    this.initTableItem('参数', undefined) // 函数默认参数允许在没有值或undefined被传入时使用默认形参。
   },
   methods: {
+    initTableItem(params, config = {}) {
+      const tableItems = JSON.parse(JSON.stringify(this.tableItems))
+      tableItems.forEach( item => item.check = true)
+
+      const key = tableItems.map(item => item.label)
+      console.log(tableItems, key)
+    },
     getLast7Days() {
       const date = []
       date.push(this.$moment().subtract('days', 6).format('YYYY-MM-DD'))

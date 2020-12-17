@@ -56,12 +56,12 @@ export default {
   name: 'Index',
   data() {
     return {
-      list: [
-        {
-          id: 1111,
-          name: '哈哈'
-        }
-      ],
+      // list: [
+      //   {
+      //     id: 1111,
+      //     name: '哈哈'
+      //   }
+      // ],
       formInline: {
         id: '',
         name: '',
@@ -70,9 +70,9 @@ export default {
     }
   },
   computed: {
-    // ...mapState({
-    //   list: state => state.dept.deptChild.deptList
-    // })
+    ...mapState({
+      // list: state => state.dept.deptChild.deptList
+    })
   },
   /**
    * dept/addSubmiT(): dept.addSubmiT
@@ -98,6 +98,9 @@ export default {
     handleAcction() {
       this.testActionB('点击')
     }
+  },
+  mounted() {
+    console.log(mapState)
   }
 }
 </script>

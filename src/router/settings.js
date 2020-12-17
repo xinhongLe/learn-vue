@@ -130,6 +130,12 @@ export default [
         name: 'learnVue',
         title: '学习官网',
         component: () => import('@/pages/learnVue/index')
+      },
+      {
+        path: 'learnTree',
+        name: 'learnTree',
+        title: '学习树型结构',
+        component: () => import('@/pages/learnVue/learn-tree/index')
       }
     ]
   },

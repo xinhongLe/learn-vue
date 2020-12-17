@@ -6,6 +6,9 @@ import router from './router'
 import store from './store/index'
 import ElementUI from 'element-ui'
 import moment from 'moment'
+// import aa from  './assets/js/index'
+// console.log(aa , 'main')
+// Vue.use(aa)
 
 import 'element-ui/lib/theme-chalk/index.css'
 import './assets/style/reset.css'
