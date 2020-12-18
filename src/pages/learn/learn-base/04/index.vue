@@ -1,6 +1,7 @@
 <template>
   <div>
-    <el-table :data="tableData" :header-row-style="headerMethod" :summary-method="getSummaries" show-summary :span-method="objectSpanMethod" border style="width: 100%">
+    <!--:header-row-style="headerMethod"-->
+    <el-table :data="tableData" class="customTable"  :summary-method="getSummaries" show-summary :span-method="objectSpanMethod" border style="width: 100%">
       <el-table-column prop="id" label="ID" width="180"></el-table-column>
       <el-table-column prop="total" label="合计"></el-table-column>
       <el-table-column prop="name" label="姓名"></el-table-column>
@@ -250,10 +251,11 @@ export default {
     },
     getSummaries(param) {
       const { columns, data } = param
+      console.log(columns, data)
       const sums = []
       columns.forEach((column, index) => {
         if (index === 0) {
-          sums[index] = '总价'
+          sums[index] = '合计'
           return
         }
         const values = data.map(item => Number(item[column.property]))
@@ -273,7 +275,17 @@ export default {
       })
 
       return sums
+    },
+    showSummariesPosition() {
+      const table = document.querySelector('.customTable')
+      const footer = document.querySelector('.customTable .el-table__footer-wrapper')
+      const body = document.querySelector('.customTable .el-table__body-wrapper')
+      table.removeChild(footer)
+      table.insertBefore(footer, body)
     }
+  },
+  mounted() {
+    this.showSummariesPosition()
   }
 }
 </script>
