@@ -17,6 +17,22 @@ module.exports = {
         target: 'http://localhost:3000',
         changeOrigin: true,
         pathRewrite: { '^/apis': '' }
+      },
+      '/estateApi': {
+        target: 'http://10.1.1.57:20010',
+        changeOrigin: true,
+        // ws: true,//websocket支持
+        pathRewrite: {
+          '^/estateApi': '/'
+        }
+      },
+      '/estateView': {
+        target: 'http://10.1.1.57:8012',
+        changeOrigin: true,
+        // ws: true,//websocket支持
+        pathRewrite: {
+          '^/estateView': '/'
+        }
       }
     }
   },

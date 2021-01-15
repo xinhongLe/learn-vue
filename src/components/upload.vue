@@ -1,75 +1,71 @@
 <template>
   <div>
-    <el-upload
-      action="#"
-      list-type="picture-card"
-      :auto-upload="false"
-      :multiple="true"
-      :file-list="fileList"
-      :on-change="handleChange"
-    >
-      <i slot="default" class="el-icon-plus"></i>
-      <div slot="file" slot-scope="{file}">
-        <img
-          class="el-upload-list__item-thumbnail"
-          :src="file.url"
-          alt=""
-        >
-        <span class="el-upload-list__item-actions">
-          <span
-            class="el-upload-list__item-preview"
-            @click="handlePictureCardPreview(row)"
-          >
-            <i class="el-icon-zoom-in"></i>
-          </span>
-          <span
-            v-if="!disabled"
-            class="el-upload-list__item-delete"
-            @click="handleDownload(file)"
-          >
-            <i class="el-icon-download"></i>
-          </span>
-          <span
-            v-if="!disabled"
-            class="el-upload-list__item-delete"
-            @click="handleRemove(file)"
-          >
-            <i class="el-icon-delete"></i>
-          </span>
-        </span>
-      </div>
-    </el-upload>
-    <el-dialog :visible.sync="dialogVisible">
-      <img width="100%" :src="dialogImageUrl" alt="">
-    </el-dialog>
+    <div style="margin: 20px 0">
+      <span>附件列表：</span>
+      <el-button type="primary" :disabled="formDisabled" @click="$refs.file.click()">上传附件</el-button>
+      <input ref="file" type="file" accept=".png,.doc,.docx,.xls,.xlsx,.pdf," style="display: none" @change="uploadFileChange">
+    </div>
+    <el-table border :data="form.fileIds" style="width: 50%">
+      <el-table-column prop="fileName" align="center" label="文件名">
+        <template slot-scope="scope">
+          <span style="cursor:pointer;text-decoration:underline" @click="handleView(scope.row)">{{ scope.row.fileName }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column align="center" label="操作">
+        <template slot-scope="{row,$index}">
+          <el-button type="text" size="small" @click="handleDownload(row)">下载</el-button>
+          <el-button type="text" size="small" :disabled="formDisabled" @click="handleDelete(row,$index)">删除</el-button>
+        </template>
+      </el-table-column>
+    </el-table>
+
   </div>
 </template>
 <script>
+import { uploadFile, delFile, viewFile } from '@/api/file'
 export default {
-  name: 'Upload',
+  name: 'UploadFile',
   data() {
     return {
-      dialogImageUrl: '',
-      dialogVisible: false,
-      disabled: false,
-      fileList: []
+      formDisabled: false,
+      form: {
+        fileIds: []
+      },
+      base64Url: ''
     }
   },
   methods: {
-    handleChange(file, fileList) {
-      this.fileList = fileList
-      console.log(file, fileList, 'pppp')
+    uploadFileChange(e) {
+      const formData = new FormData()
+      formData.append('file', e.target.files[0])
+      uploadFile(formData).then(res => {
+        if (res.code === '0000' || res.code === 200) {
+          this.form.fileIds.push({ fileId: res.fileId, fileName: res.fileName, mongoId: res.mongoId, fileSize: res.fileSize })
+          this.$message.success('上传文件成功')
+        } else {
+          this.$message.error(res.message)
+        }
+      })
     },
-    handleRemove(file) {
-      this.fileList = []
-      console.log(file);
+    handleView(row) {
+      if (+row.fileSize === 1) {
+        window.location.href = `estateApi/mongofile/downFile?mongoId=${row.mongoId}&fileName=${row.fileName}`
+      } else {
+        window.open(`estateView/onlinePreviewToLg?url=/mongofile/downFile?mongoId=${row.mongoId}&fileName=${row.fileName}`)
+      }
     },
-    handlePictureCardPreview(file) {
-      this.dialogImageUrl = file.url
-      this.dialogVisible = true
+    handleDelete(row, index) {
+      delFile({ mongoId: row.mongoId, fileId: row.fileId }).then(res => {
+        if (res.code === '0000' || res.code === 200) {
+          this.form.fileIds.splice(index, 1)
+          this.$message.success('删除文件成功')
+        } else {
+          this.$message.error(res.message)
+        }
+      })
     },
-    handleDownload(file) {
-      console.log(file)
+    handleDownload(row) {
+      window.location.href = `estateApi/mongofile/downFile?mongoId=${row.mongoId}&fileName=${row.fileName}`
     }
   }
 }
