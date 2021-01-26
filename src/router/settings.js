@@ -104,6 +104,18 @@ export default [
         name: 'my-tab-tip',
         title: 'tab实现tip',
         component: () => import('@learn/learn-component/04/Index')
+      },
+      {
+        path: 'learn-provide',
+        name: 'learn-provide',
+        title: '实现组件传参',
+        component: () => import('@learn/learn-component/05/A')
+      },
+      {
+        path: 'learn-iframe',
+        name: 'learn-iframe',
+        title: 'iframe通信',
+        component: () => import('@learn/learn-component/06/parent')
       }
     ]
   },

@@ -1,7 +1,7 @@
 <template>
   <div>
     <!--:header-row-style="headerMethod"-->
-    <el-table :data="tableData" class="customTable"  :summary-method="getSummaries" show-summary :span-method="objectSpanMethod" border style="width: 100%">
+    <el-table :data="tableData" class="customTable" :summary-method="getSummaries" show-summary :span-method="objectSpanMethod" border style="width: 100%">
       <el-table-column prop="id" label="ID" width="180"></el-table-column>
       <el-table-column prop="total" label="合计"></el-table-column>
       <el-table-column prop="name" label="姓名"></el-table-column>
@@ -104,7 +104,7 @@ export default {
 
     this.transformData()
     localStorage.setItem('value', JSON.stringify({ name: 'hong' }))
-    this.$once('hook:beforeDestroy',() => {
+    this.$once('hook:beforeDestroy', () => {
       localStorage.removeItem('value')
     })
   },
