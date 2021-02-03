@@ -10,7 +10,8 @@ import moment from 'moment'
 // console.log(aa , 'main')
 // Vue.use(aa)
 
-import 'element-ui/lib/theme-chalk/index.css'
+// import 'element-ui/lib/theme-chalk/index.css'
+import './assets/style/element-variables.scss'
 import './assets/style/reset.css'
 
 Vue.prototype.$moment = moment

@@ -1,0 +1,16 @@
+$--color-primary: #4169FF;
+$--color-text-primary: #3F4254;
+$--color-text-regular:#6C7293;
+$--color-text-secondary:#8F95B3;
+$--color-text-placeholder:#B5B5C3;
+$--color-success:#00C4BB;
+$--color-warning:#FFA800;
+$--color-danger:#F64E60;
+$--color-info:#587AFB;
+$--border-color-base:#DCE0EC;
+$--border-color-light:#DCE0EC;
+$--border-color-lighter:#EEF0F8;
+$--border-color-extra-light:#F3F6F9;
+
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+@import "~element-ui/packages/theme-chalk/src/index";
