@@ -1,7 +1,7 @@
 <template>
   <div>
     <!--:header-row-style="headerMethod"-->
-    <el-table :data="tableData" class="customTable" :summary-method="getSummaries" show-summary :span-method="objectSpanMethod" border style="width: 100%">
+   <!-- <el-table :data="tableData" class="customTable" :summary-method="getSummaries" show-summary :span-method="objectSpanMethod" border style="width: 100%">
       <el-table-column prop="id" label="ID" width="180"></el-table-column>
       <el-table-column prop="total" label="合计"></el-table-column>
       <el-table-column prop="name" label="姓名"></el-table-column>
@@ -25,7 +25,7 @@
           </template>
         </el-table-column>
       </el-table>
-    </el-form>
+    </el-form>-->
 
     <div style="margin-top: 40px">
       <div>
@@ -53,6 +53,21 @@
         </el-table-column>
       </el-table>
     </div>
+
+    <div style="margin-top: 40px">
+      <el-table :data="tableData1" border style="width: 100%;margin-top: 40px">
+        <el-table-column type="index" width="60"></el-table-column>
+        <el-table-column v-for="(item,index) in selectData.filter(item => item.check)" :key="index" :label="item.name">
+          <template slot-scope="{row}">
+            <span>{{ row[item.prop] }}</span>
+          </template>
+        </el-table-column>
+      </el-table>
+    </div>
+
+   <div style="margin-top: 20px">
+     <el-switch v-model="value" @change="handleSwitchChange" active-color="#13ce66" inactive-color="#ff4949"></el-switch>
+   </div>
   </div>
 </template>
 
@@ -65,6 +80,7 @@ export default {
   },
   data() {
     return {
+      value: true,
       ...testData,
       spanArr: [],
       pos: '',
@@ -112,6 +128,10 @@ export default {
   //   localStorage.removeItem('value')
   // },
   methods: {
+    handleSwitchChange() {
+      const ref = document.querySelector('.switchClass .el-switch__input')
+      ref.blur()
+    },
     handleReset() {
       this.selectData.forEach((item, index) => {
         if (index !== 0) {
@@ -277,11 +297,11 @@ export default {
       return sums
     },
     showSummariesPosition() {
-      const table = document.querySelector('.customTable')
+     /* const table = document.querySelector('.customTable')
       const footer = document.querySelector('.customTable .el-table__footer-wrapper')
       const body = document.querySelector('.customTable .el-table__body-wrapper')
       table.removeChild(footer)
-      table.insertBefore(footer, body)
+      table.insertBefore(footer, body)*/
     }
   },
   mounted() {
