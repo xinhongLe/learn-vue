@@ -1,7 +1,7 @@
 <template>
   <div>
     <!--:header-row-style="headerMethod"-->
-   <!-- <el-table :data="tableData" class="customTable" :summary-method="getSummaries" show-summary :span-method="objectSpanMethod" border style="width: 100%">
+    <el-table :data="tableData" class="customTable" :summary-method="getSummaries" show-summary :span-method="objectSpanMethod" border style="width: 100%">
       <el-table-column prop="id" label="ID" width="180"></el-table-column>
       <el-table-column prop="total" label="合计"></el-table-column>
       <el-table-column prop="name" label="姓名"></el-table-column>
@@ -25,7 +25,7 @@
           </template>
         </el-table-column>
       </el-table>
-    </el-form>-->
+    </el-form>
 
     <div style="margin-top: 40px">
       <div>
@@ -65,6 +65,22 @@
       </el-table>
     </div>
 
+    <div style="margin-top: 40px">
+      <el-table :data="tableData2" border style="width: 80%" size="small">
+        <el-table-column align="center" header-align="center" type="index" label="序号" width="60"> </el-table-column>
+        <el-table-column align="center" header-align="center" prop="name" label="名称" width="200"> </el-table-column>
+        <el-table-column align="center" header-align="center" prop="name" label="题量"></el-table-column>
+        <el-table-column align="center" header-align="center" prop="address" label="预计用时"> </el-table-column>
+        <el-table-column align="center" header-align="center" label="操作">
+          <template slot-scope="scope">
+            <el-button @click="deleteRow(scope.$index, scope.row, 'up')" type="text" size="small"> 上移 </el-button>
+            <el-button @click="deleteRow(scope.$index, scope.row, 'down')" type="text" size="small"> 下移 </el-button>
+            <el-button @click="deleteRow(scope.$index, scope.row, 'del')" type="text" size="small" class="dangerBtn"> 删除 </el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+    </div>
+
    <div style="margin-top: 20px">
      <el-switch v-model="value" @change="handleSwitchChange" active-color="#13ce66" inactive-color="#ff4949"></el-switch>
    </div>
@@ -89,26 +105,6 @@ export default {
         tableDataCol: []
       },
       colData: [],
-      staff: [
-        { name: 'April', job: 'programmer', age: '18', hobby: 'study' },
-        { name: 'Shawn', job: 'student', age: '8', hobby: 'study' },
-        { name: 'Leo', job: 'teacher', age: '28', hobby: 'play' },
-        { name: 'Todd', job: 'programmer', age: '19', hobby: 'sleep' },
-        { name: 'Scoot', job: 'cook', age: '38', hobby: 'paintting' }
-      ],
-      selectData: [
-        { name: '区域名称', prop: 'test1', check: true },
-        { name: '公司名称', prop: 'test2', check: true },
-        { name: '未提交', prop: 'test3', check: true },
-        { name: '待审核', prop: 'test4', check: true },
-        { name: '审核通过', prop: 'test5', check: true }
-      ],
-      tableData1: [
-        { test1: '湖北区域', test2: '湖北航信', test3: '5', test4: '7', test5: '99' },
-        { test1: '河南区域', test2: '河南航信', test3: '5', test4: '7', test5: '99' },
-        { test1: '山西区域', test2: '山西航信', test3: '5', test4: '7', test5: '99' },
-        { test1: '新疆区域', test2: '新疆航信', test3: '5', test4: '7', test5: '99' }
-      ],
       multipleSelection: [],
       showDom: false
     }
@@ -128,6 +124,27 @@ export default {
   //   localStorage.removeItem('value')
   // },
   methods: {
+    deleteRow (index, e, type) {
+      if (type === 'up') {
+        if (index === 0) {
+          return
+        }
+        // 在上一项插入该项
+        this.tableData2.splice(index - 1, 0, (this.tableData2[index]))
+        // 删除后一项
+        this.tableData2.splice(index + 1, 1)
+      } else if (type === 'down') {
+        if (index === (this.tableData2.length - 1)) {
+          return
+        }
+        // 在下一项插入该项
+        this.tableData2.splice(index + 2, 0, (this.tableData2[index]))
+        // 删除前一项
+        this.tableData2.splice(index, 1)
+      } else if (type === 'del') {
+        this.tableData2.splice(index, 1)
+      }
+    },
     handleSwitchChange() {
       const ref = document.querySelector('.switchClass .el-switch__input')
       ref.blur()
