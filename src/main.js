@@ -10,6 +10,9 @@ import moment from 'moment'
 // console.log(aa , 'main')
 // Vue.use(aa)
 
+import permission from './utils/permission/index'
+Vue.use(permission, { store })
+
 // import 'element-ui/lib/theme-chalk/index.css'
 import './assets/style/element-variables.scss'
 import './assets/style/reset.css'

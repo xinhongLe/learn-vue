@@ -8,6 +8,7 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     data: ['12', '34', '56'],
+    isAdmin: false,
     list: [
       {
         id: 1111,
