@@ -5,6 +5,12 @@ export default [
     component: () => import('@/pages/index/Index'),
     children: [
       {
+        path: 'learn-draggable',
+        name: 'learn-draggable',
+        title: '拖拽',
+        component: () => import('@learn/learn-base/05/index')
+      },
+      {
         path: 'learn-watch',
         name: 'learn-watch',
         title: 'watch监听',
