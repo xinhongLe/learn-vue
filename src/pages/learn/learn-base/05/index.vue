@@ -2,26 +2,26 @@
   <div class="container">
     <div class="layout">
       <button
-        class="layout-btn"
-        @click="layoutType=val.value"
         v-for="val in layoutOptions"
         :key="val.value"
-      >{{val.label}}</button>
+        class="layout-btn"
+        @click="layoutType=val.value"
+      >{{ val.label }}</button>
     </div>
 
     <div
-      class="group"
-      :class="{'left-top-container': gindex===0,
-    'right-top-container': gindex===1,
-    'bottom-container': gindex===2,
-    'top-container': gindex<2}"
       v-for="(group,gindex) in data"
       :key="gindex"
+      class="group"
+      :class="{'left-top-container': gindex===0,
+               'right-top-container': gindex===1,
+               'bottom-container': gindex===2,
+               'top-container': gindex<2}"
     >
       <div
-        class="cls-default"
         v-for="(item,cindex) in group.children"
         :key="cindex"
+        class="cls-default"
         :data-id="gindex+'-'+cindex"
         draggable="true"
         @dragstart="onDragstart($event)"
@@ -30,14 +30,16 @@
         @drop="onDrop($event)"
         :style="{'background-color': item.color}"
         :class="{'cls1-0': cindex ===0 && layoutType==1,
-    'cls2-0': (cindex ===0 || cindex ===1) && layoutType==2,
-    'cls3-0': cindex ===0 && layoutType==3,
-    'cls3-1': (cindex ===1 || cindex ===2) && layoutType==3,
-    'cls4-0': cindex <4 && layoutType==4,
-    'cls6-0': cindex === 0 && layoutType==6
-    }"
+                 'cls2-0': (cindex ===0 || cindex ===1) && layoutType==2,
+                 'cls3-0': cindex ===0 && layoutType==3,
+                 'cls3-1': (cindex ===1 || cindex ===2) && layoutType==3,
+                 'cls4-0': cindex <4 && layoutType==4,
+                 'cls6-0': cindex === 0 && layoutType==6
+        }"
       >
-        <div class="content">{{item.color ? item.color : '我是空对象'}}</div>
+        <div class="content">{{ item.color ? item.color : '我是空对象' }}
+        </div>
+        <div>{{ item.text ? item.text : '' }}</div>
       </div>
     </div>
     <div class="tips">上面两个区域内是展示区的内容能互相拖拽
@@ -50,104 +52,107 @@
 export default {
   data() {
     return {
-      stargindex: "",
-      endIndex: "",
-      layoutType: "6",
+      stargindex: '',
+      endIndex: '',
+      layoutType: '6',
       layoutOptions: [
-        { label: "单分屏", value: 1 },
-        { label: "二分屏", value: 2 },
-        { label: "三分屏", value: 3 },
-        { label: "四分屏", value: 4 },
-        { label: "六分屏", value: 6 },
-        { label: "九分屏", value: 9 }
+        { label: '单分屏', value: 1 },
+        { label: '二分屏', value: 2 },
+        { label: '三分屏', value: 3 },
+        { label: '四分屏', value: 4 },
+        { label: '六分屏', value: 6 },
+        { label: '九分屏', value: 9 }
       ],
       data: [
         {
-          group: "left-show",
-          title: "视频播放区一",
+          group: 'left-show',
+          title: '视频播放区一',
           children: [
             {
               id: 6,
-              color: "orange"
+              color: 'orange'
             },
             {
               id: 2,
-              color: "yellow"
+              color: 'yellow'
             },
             {},
-            {},
-            {},
-            {},
-            {
-              id: 3,
-              color: "cyan"
-            },
-            {},
-            {
-              id: 5,
-              color: "brown"
-            }
+            // {},
+            // {},
+            // {},
+            // {
+            //   id: 3,
+            //   color: 'cyan'
+            // },
+            // {},
+            // {
+            //   id: 5,
+            //   color: 'brown'
+            // }
           ]
         },
         {
-          group: "right-show",
-          title: "视频播放区二",
+          group: 'right-show',
+          title: '视频播放区二',
           children: [
             {},
             {
               id: 7,
-              color: "pink"
+              color: 'pink'
             },
             {},
             {},
-            { id: 4, color: "purple" },
-            {},
-            {},
-            {},
-            {
-              id: 10,
-              color: "gray"
-            }
+            { id: 4, color: 'purple' },
+            // {},
+            // {},
+            // {},
+            // {
+            //   id: 10,
+            //   color: 'gray'
+            // }
           ]
         },
         {
-          group: "source",
-          title: "视频资源区",
+          group: 'source',
+          title: '视频资源区',
           children: [
             {
               id: 11,
-              color: "white"
+              color: 'white'
             },
             {
               id: 12,
-              color: "black"
+              color: 'black'
             },
-            {
-              id: 13,
-              color: "red"
-            },
-            {
-              id: 14,
-              color: "green"
-            },
-            {
-              id: 15,
-              color: "blue"
-            }
+            // {
+            //   id: 13,
+            //   color: 'red'
+            // },
+            // {
+            //   id: 14,
+            //   color: 'green'
+            // },
+            // {
+            //   id: 15,
+            //   color: 'blue'
+            // }
           ]
         }
       ]
-    };
+    }
   },
   methods: {
     onDragstart(event) {
-      this.stargindex = event.target.getAttribute("data-id");
+      // console.log(event, 'event')
+      this.stargindex = event.target.getAttribute('data-id')
+      console.log(this.stargindex, ' this.stargindex')
     },
     onDragend(event) {
-      let startGroupIndex = this.stargindex.split("-")[0];
-      let startChildIndex = this.stargindex.split("-")[1];
-      let endGroupIndex = this.endIndex.split("-")[0];
-      let endChildIndex = this.endIndex.split("-")[1];
+      console.log('onDragend')
+      const startGroupIndex = this.stargindex.split('-')[0]
+      const startChildIndex = this.stargindex.split('-')[1]
+      const endGroupIndex = this.endIndex.split('-')[0]
+      const endChildIndex = this.endIndex.split('-')[1]
       // 对数据做简单的深拷贝 目前不需要
       // let endObj = JSON.parse(
       //  JSON.stringify(this.data[endGroupIndex].children[endChildIndex])
@@ -155,30 +160,55 @@ export default {
       // let startObj = JSON.parse(
       //  JSON.stringify(this.data[startGroupIndex].children[startChildIndex])
       // );
-      let endObj = this.data[endGroupIndex].children[endChildIndex];
-      let startObj = this.data[startGroupIndex].children[startChildIndex];
-      if (this.data[endGroupIndex].group === "source") {
-        //往资源区拖拽时 不做任何替换操作
-        return;
+      // alert('确认')
+      const endObj = Object.assign({}, this.data[endGroupIndex].children[endChildIndex], { text: '测试一下啦' })
+      // console.log(endObj, 'endObj')
+      // const startObj = this.data[startGroupIndex].children[startChildIndex]
+      // if (this.data[endGroupIndex].group === 'source') {
+      //   // 往资源区拖拽时 不做任何替换操作
+      //   return
+      // }
+      this.data[endGroupIndex].children.splice(endChildIndex, 1, endObj)
+      // if (this.data[startGroupIndex].group !== 'source') {
+      //   // 拖拽起始区域不是 source时 把起始区域替换成拖拽后区域的数据
+      //   this.data[startGroupIndex].children.splice(startChildIndex, 1, endObj)
+      // }
+    },
+    onDragenEnter(event) {
+      // event.style.color = 'red'
+      console.log(event.target, 'onDragenEnter', event.target.classList.contains('cls-default'))
+      const cls = document.getElementsByClassName('cls-default')
+      console.log(cls, 'cls')
+      if (!event.target.classList.contains('cls-default')) {
+        this.removeClsClass(cls)
+        return
       }
-      this.data[endGroupIndex].children.splice(endChildIndex, 1, startObj);
-      if (this.data[startGroupIndex].group !== "source") {
-        //拖拽起始区域不是 source时 把起始区域替换成拖拽后区域的数据
-        this.data[startGroupIndex].children.splice(startChildIndex, 1, endObj);
+      // 移除所有的标签选中样式
+      this.removeClsClass(cls)
+      // 目标元素增加高亮
+      event.target.classList.add('active')
+    },
+    removeClsClass(cls) {
+      for (let i = 0; i < cls.length; i++) {
+        cls[i].classList.remove('active')
       }
     },
     onDrop(event) {
-      if (event.target.className.indexOf("cls-default") > -1) {
-        this.endIndex = event.target.getAttribute("data-id");
-      } else {
-        this.endIndex = event.target.parentElement.getAttribute("data-id");
-      }
+      // event.target.remove()
+      console.log(event.target, 'onDrop')
+      // if (event.target.className.indexOf('cls-default') > -1) {
+      //   this.endIndex = event.target.getAttribute('data-id')
+      //   console.log(this.endIndex, 'onDrop-data-id--11')
+      // } else {
+      //   this.endIndex = event.target.parentElement.getAttribute('data-id')
+      //   console.log(this.endIndex, 'onDrop-data-id--22')
+      // }
     },
     onDragover(event) {
-      event.preventDefault();
+      event.preventDefault()
     }
   }
-};
+}
 </script>
 
 <style scoped>
@@ -211,6 +241,9 @@ export default {
   box-sizing: border-box;
   overflow: hidden;
   border: 1px solid #999;
+}
+.cls-default.active {
+  border: 2px solid #f60000;
 }
 .cls-default .content {
   text-align: center;
@@ -260,7 +293,6 @@ export default {
   height: 150px;
 }
 </style>
-
 
 <!--
 <template>
