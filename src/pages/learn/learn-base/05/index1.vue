@@ -2,29 +2,32 @@
   <div style="margin: 60px;display: flex;justify-content: space-around">
     <div>
       <h4 style="margin-bottom: 20px">拖拽区域</h4>
-      <div class="course-class" draggable="true" :data-id="'course-'+ index"
-           v-for="(item, index) in courseList"
-           :key="index"
-           @dragstart="onDragstart($event)"
-           @dragend="onDragend($event)"
+      <div
+        v-for="(item, index) in courseList"
+        :key="index"
+        class="course-class"
+        draggable="true"
+        :data-id="'course-'+ index"
+        @dragstart="onDragstart($event)"
+        @dragend="onDragend($event)"
       >
-        <p>{{item.name}}</p>
+        <p>{{ item.name }}</p>
       </div>
     </div>
     <div>
       <h4 style="margin-bottom: 20px">目标区域</h4>
-      <div class="target-class"
-           v-for="(item,index) in targetList"
-           :key="index"
-           :data-id="'target-' + index"
-           draggable="true"
-           @drop="onDrop($event)"
-           @dragenter="onDragenEnter($event)"
-           @onDragover="onDragover($event)"
-
+      <div
+        v-for="(item,index) in targetList"
+        :key="index"
+        class="target-class"
+        :data-id="'target-' + index"
+        draggable="true"
+        @drop="onDrop($event)"
+        @dragenter="onDragenEnter($event)"
+        @onDragover="onDragover($event)"
       >
-        <p>{{item.name ? item.name : ''}}</p>
-        <p>{{item.tag ? '有班级' : '没有班级'}}</p>
+        <p>{{ item.name ? item.name : '' }}</p>
+        <p>{{ item.tag ? '有班级' : '没有班级' }}</p>
       </div>
     </div>
   </div>
@@ -32,25 +35,25 @@
 
 <script>
 export default {
-  name: "index",
+  name: 'Index',
   data() {
     return {
       courseList: [
-        {name: '语文',score: '80'},
-        {name: '数学',score: '90'},
-        {name: '英语',score: '10'},
+        { name: '语文', score: '80' },
+        { name: '数学', score: '90' },
+        { name: '英语', score: '10' }
       ],
       targetList: [
         {},
-        {tag: true},
-        {},
+        { tag: true },
+        {}
       ],
       stargindex: '',
       endindex: '',
       move: false
     }
   },
-  methods:{
+  methods: {
     // 元素开始被拖动时候触发
     onDragstart(event) {
       console.log(event.target, 'onDragstart')
@@ -59,7 +62,7 @@ export default {
     },
     // 在拖动操作完成时触发
     onDragend(event) {
-      if(!this.move){
+      if (!this.move) {
         return
       }
 
@@ -67,10 +70,10 @@ export default {
       const courseIndex = this.stargindex.split('-')[1]
       const targetIndex = this.endindex.split('-')[1]
 
-      if(!this.targetList[targetIndex].tag){
+      if (!this.targetList[targetIndex].tag) {
         alert('没有班级')
-      }else{
-        const currentObj =  this.targetList[targetIndex]
+      } else {
+        const currentObj = this.targetList[targetIndex]
         this.targetList.splice(targetIndex, 1, Object.assign(currentObj, this.courseList[courseIndex]))
       }
 
@@ -80,7 +83,7 @@ export default {
     // 当被拖动元素进入目的地元素所占据的屏幕空间时触发
     onDragenEnter(event) {
       this.move = false
-      if(event.target.className.indexOf('target-class') > -1){
+      if (event.target.className.indexOf('target-class') > -1) {
         this.move = true
       }
       console.log(event, 'onDragenEnter')
